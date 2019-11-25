@@ -7,7 +7,7 @@ Planned features:
 - A searchable database of trainers by trainer name
 
 - A list of all currently available variants that a given trainer already has, as well as an automatically calculated list of what they do not.
-  -Variants will include shiny, lucky, shadow, gender, legacy moves, and overlap where applicable.
+  - Variants will include shiny, lucky, shadow, gender, legacy moves, and overlap where applicable.
 
 - A wants list for trading, ranked by level of desire.
 
