@@ -6,6 +6,7 @@ class CreateTrainers < ActiveRecord::Migration[6.0]
       t.boolean :display_email, default: false
       t.text :contact_info
       t.string :location
+      t.string :team
 
       t.timestamps
     end

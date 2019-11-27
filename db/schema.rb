@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_223342) do
     t.boolean "display_email", default: false
     t.text "contact_info"
     t.string "location"
+    t.string "team"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
