@@ -1,0 +1,2 @@
+class BaseMon < ApplicationRecord
+end

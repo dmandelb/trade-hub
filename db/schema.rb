@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_223342) do
+ActiveRecord::Schema.define(version: 2019_11_30_185801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "base_mons", force: :cascade do |t|
+    t.string "name"
+    t.integer "dex_num"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "trainer_id", null: false
+    t.bigint "friend_id", null: false
+    t.integer "level", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["trainer_id"], name: "index_friendships_on_trainer_id"
+  end
 
   create_table "trainers", force: :cascade do |t|
     t.string "trainer_name", null: false
@@ -26,4 +43,5 @@ ActiveRecord::Schema.define(version: 2019_11_26_223342) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "friendships", "trainers"
 end
