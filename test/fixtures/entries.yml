@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dex: one
+  available_mon: one
+  filled?: false
+  available?: false
+  priority: 1
+
+two:
+  dex: two
+  available_mon: two
+  filled?: false
+  available?: false
+  priority: 1
