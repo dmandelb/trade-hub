@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_025627) do
+ActiveRecord::Schema.define(version: 2019_12_04_193207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "available_mons", force: :cascade do |t|
+    t.bigint "variant_id", null: false
+    t.bigint "base_mon_id", null: false
+    t.index ["base_mon_id"], name: "index_available_mons_on_base_mon_id"
+    t.index ["variant_id"], name: "index_available_mons_on_variant_id"
+  end
 
   create_table "base_mons", force: :cascade do |t|
     t.string "name"
@@ -21,6 +28,25 @@ ActiveRecord::Schema.define(version: 2019_12_01_025627) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "generation"
+  end
+
+  create_table "dexes", force: :cascade do |t|
+    t.bigint "trainer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trainer_id"], name: "index_dexes_on_trainer_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.bigint "dex_id", null: false
+    t.bigint "available_mon_id", null: false
+    t.boolean "filled?", default: false, null: false
+    t.boolean "available?", default: false, null: false
+    t.integer "priority", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["available_mon_id"], name: "index_entries_on_available_mon_id"
+    t.index ["dex_id"], name: "index_entries_on_dex_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -44,5 +70,16 @@ ActiveRecord::Schema.define(version: 2019_12_01_025627) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "variants", force: :cascade do |t|
+    t.boolean "shiny?", default: false, null: false
+    t.boolean "lucky?", default: false, null: false
+    t.boolean "shadow?", default: false, null: false
+    t.string "gender"
+  end
+
+  add_foreign_key "available_mons", "base_mons"
+  add_foreign_key "available_mons", "variants"
+  add_foreign_key "entries", "available_mons"
+  add_foreign_key "entries", "dexes"
   add_foreign_key "friendships", "trainers"
 end
