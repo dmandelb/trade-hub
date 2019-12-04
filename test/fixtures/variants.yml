@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shiny?: false
+  lucky?: false
+  shadow?: false
+  gender: MyString
+
+two:
+  shiny?: false
+  lucky?: false
+  shadow?: false
+  gender: MyString
