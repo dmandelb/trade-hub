@@ -7,5 +7,5 @@ class Trainer < ApplicationRecord
   validates :team, inclusion: {in: %w(Blue Red Yellow)}
   has_many :friendships
   has_many :inverse_friendships, foreign_key: :friend_id
-  has)_many :friends, through: :friendships
+  has_many :friends, through: :friendships
 end
