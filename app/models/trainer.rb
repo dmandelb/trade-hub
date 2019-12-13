@@ -1,4 +1,8 @@
 class Trainer < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   validates_presence_of :trainer_name, :email
   validates :team, inclusion: {in: %w(Blue Red Yellow)}
   has_many :friendships
