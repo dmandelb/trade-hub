@@ -18,8 +18,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 
-# Make external API calls
-gem 'httparty', '~> 0.17.1'
+# Make external API calls with Unirest
+gem 'unirest', '~> 1.1', '>= 1.1.2'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
