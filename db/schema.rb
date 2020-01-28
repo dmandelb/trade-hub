@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_27_185807) do
+ActiveRecord::Schema.define(version: 2020_01_28_220606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_12_27_185807) do
   create_table "available_mons", force: :cascade do |t|
     t.bigint "variant_id", null: false
     t.bigint "base_mon_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["base_mon_id"], name: "index_available_mons_on_base_mon_id"
     t.index ["variant_id"], name: "index_available_mons_on_variant_id"
   end
@@ -53,7 +55,6 @@ ActiveRecord::Schema.define(version: 2019_12_27_185807) do
     t.integer "dex_num", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "generation"
   end
 
   create_table "dexes", force: :cascade do |t|
@@ -85,6 +86,21 @@ ActiveRecord::Schema.define(version: 2019_12_27_185807) do
     t.index ["trainer_id"], name: "index_friendships_on_trainer_id"
   end
 
+  create_table "legacy_moves", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "legacy_moves_variants", force: :cascade do |t|
+    t.bigint "variants_id"
+    t.bigint "legacy_moves_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["legacy_moves_id"], name: "index_legacy_moves_variants_on_legacy_moves_id"
+    t.index ["variants_id"], name: "index_legacy_moves_variants_on_variants_id"
+  end
+
   create_table "trainers", force: :cascade do |t|
     t.string "trainer_name", null: false
     t.string "email", default: "", null: false
@@ -107,6 +123,11 @@ ActiveRecord::Schema.define(version: 2019_12_27_185807) do
     t.boolean "lucky?", default: false, null: false
     t.boolean "shadow?", default: false, null: false
     t.string "gender"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "alola?", default: false
+    t.boolean "galarian?", default: false
+    t.string "miscellaneous"
   end
 
   add_foreign_key "available_mons", "base_mons"
