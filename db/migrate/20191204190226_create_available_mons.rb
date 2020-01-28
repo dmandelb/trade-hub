@@ -3,6 +3,8 @@ class CreateAvailableMons < ActiveRecord::Migration[6.0]
     create_table :available_mons do |t|
       t.references :variant, null: false, foreign_key: true
       t.references :base_mon, null: false, foreign_key: true
+
+      t.timestamps
     end
   end
 end

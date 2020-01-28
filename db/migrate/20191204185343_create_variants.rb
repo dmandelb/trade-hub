@@ -5,6 +5,8 @@ class CreateVariants < ActiveRecord::Migration[6.0]
       t.boolean :lucky?, null: false, default: false
       t.boolean :shadow?, null: false, default: false
       t.string :gender
+
+      t.timestamps
     end
   end
 end
