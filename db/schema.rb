@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 2020_01_28_220606) do
   create_table "entries", force: :cascade do |t|
     t.bigint "dex_id", null: false
     t.bigint "available_mon_id", null: false
-    t.boolean "filled?", default: false, null: false
-    t.boolean "available?", default: false, null: false
+    t.boolean "filled", default: false, null: false
+    t.boolean "available", default: false, null: false
     t.integer "priority", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -119,14 +119,14 @@ ActiveRecord::Schema.define(version: 2020_01_28_220606) do
   end
 
   create_table "variants", force: :cascade do |t|
-    t.boolean "shiny?", default: false, null: false
-    t.boolean "lucky?", default: false, null: false
-    t.boolean "shadow?", default: false, null: false
+    t.boolean "shiny", default: false, null: false
+    t.boolean "lucky", default: false, null: false
+    t.boolean "shadow", default: false, null: false
     t.string "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "alola?", default: false
-    t.boolean "galarian?", default: false
+    t.boolean "alola", default: false
+    t.boolean "galarian", default: false
     t.string "miscellaneous"
   end
 
